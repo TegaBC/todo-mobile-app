@@ -1,16 +1,21 @@
 
-import { Pressable, StyleSheet, Text, View, Alert } from 'react-native';
+import { useState } from 'react';
+import { Pressable, StyleSheet, Text, View, TextInput } from 'react-native';
 
-export default function AddTask() {
-  
+export default function AddTask({ onTaskAdd }) {
+
+    const [task, setTask] = useState('')
+
     const createNewTask = () => {
-        console.log("Started new task flow")
+      onTaskAdd(task)
+      setTask('')
     }
   
     return (
       <Pressable onPress={createNewTask} style={styles.container}>
         <View style={styles.taskInfoHolder}>
-          <Text style={{fontSize: 25, color: '#d1d5db'}}>+</Text>
+          <TextInput style={{fontSize: 25}} value={task} onChangeText={setTask} placeholder='+' onSubmitEditing={createNewTask}/>
+  
         </View>
       </Pressable>
   );
