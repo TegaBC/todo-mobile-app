@@ -1,14 +1,14 @@
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-export default function Task() {
+export default function Task( { taskText, onTaskRemove, id } ) {
   return (
-      <View style={styles.container}>
+      <Pressable onPress={() => {onTaskRemove(id)}} style={styles.container}>
         <View style={styles.taskInfoHolder}>
           <View style={styles.taskIcon}></View>
-          <Text style={{fontSize: 15}}>Take out the bins</Text>
+          <Text style={{fontSize: 15}}>{taskText}</Text>
         </View>
-      </View>
+      </Pressable>
   );
 }
 
