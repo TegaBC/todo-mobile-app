@@ -8,19 +8,17 @@ import Task from './components/Task'
 export default function App() {
   const [allTasks, setAllTasks] = useState([])
 
+  // adds task to task list, could be called when clicking on empty text input so shield from 0
   const onTaskAdd = (taskText) => {
     if (taskText.length == 0) return
-
-    console.log("Adding task.")
-    console.log(allTasks)
     setAllTasks([taskText , ...allTasks])
   }
 
+  // remove task
   const onTaskRemove = (taskIndex) => {
     const currentTasks = [...allTasks]
     currentTasks.splice(taskIndex, 1)
     setAllTasks(currentTasks)
-
   }
 
   return (
